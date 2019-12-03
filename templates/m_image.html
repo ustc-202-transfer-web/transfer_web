@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/RangeSlider.js') }}"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/m_image.css') }}">
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/range.css') }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多风格融合快速迁移</title>
+</head>
+<body>
+    
+      <div class="container-fluid">
+            <div class="row">
+                    <nav class="navbar navbar-inverse "  style="height: 80px;">
+                  
+                          <div class="container">
+                              <div class="row">
+                                   
+                                        <div  class="col-md-3" margin-top:10px;><img class="second-slide" style="height: 80px;width: 130%;" src="{{ url_for('static', filename='img/logo.svg') }}"><br></div>
+                                        <div class="col-md-2"></div>
+                                        <div  class="col-md-7"  style="margin-top:15px;">
+                                        <div class="navbar-header">
+                                          <a class="navbar-brand"  href="{{ url_for('index') }}">主 页</a>
+                                        </div>
+                                        <div id="navbar" class="collapse navbar-collapse">
+                                          <ul class="nav navbar-nav">
+                                            <li><a href="{{ url_for('real_time_transfer') }}">摄像头风格迁移</a></li>
+                                            <li ><a href="{{ url_for('single_image_transfer') }}">单风格图像风格迁移</a></li>
+                                            <li ><a href="{{ url_for('muilt_image_transfer') }}">多风格融合快速迁移</a></li>
+                                            <li ><a href="{{ url_for('video_transfer') }}">视频风格迁移</a></li>
+                                            <!-- <li><a href="train.html">视频风格训练</a></li> -->
+                                          </ul>
+                                        </div><!--/.nav-collapse -->
+                                        </div>
+                            </div>
+                          </div>
+                     </nav>
+              </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title_row_1 name">
+                        <h1>风格融合与快速迁移 <small>多风格融合快速迁移</small></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container-fluid">
+                        
+                        <div class="row image_row_3">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                            <div class="button_div">
+                              
+                                                    <form class="form-inline"  id="uploadForm">
+                                                        
+                                                        <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 38%;">打开图片</button>
+                        
+                                                        <div class="form-group">
+                                                                <input type="file" id="inputfile" name="inputfile" style="opacity: 0" hidden>
+                                                            </div>
+                                                    </form>
+                                              
+                                            </div>
+                                            
+                                    <div class="scroll">
+                                    <div class="row" style="position:relative;width: 290%;">
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/1.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range0" type="range" value="0" oninput="get_weight()">
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/2.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range1" type="range" value="0" oninput="get_weight()">
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/3.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range2" type="range" value="0" oninput="get_weight()">
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/4.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range3" type="range" value="0" oninput="get_weight()">
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/5.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range4" type="range" value="0" oninput="get_weight()">
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/6.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range5" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/7.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range6" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/8.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range7" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/9.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range8" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/10.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range9" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/11.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range10" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/12.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range11" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/13.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range12" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/14.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range13" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/15.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range14" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/16.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range15" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/17.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range16" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/18.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range17" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/19.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range18" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                            <div class="col-md-1 img_div">
+                                                <img src="{{ url_for('static', filename='img/20.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
+                                                <input class="img-responsive style-range" id="range19" type="range" value="0" oninput="get_weight()"> 
+                                            </div>
+                                    </div>
+                                </div>
+                                </div>
+
+
+                        </div>
+
+                </div>
+            </div> 
+            <div class="row" style="margin-top:20px ;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                                       <div class="row">
+                                          <div class="col-md-1"></div>
+                                          <div class="col-md-10 content_img_div"><img src="{{ url_for('static', filename='img/photo0.jpg') }}" alt="..." class="img-thumbnail center-block" style="height: 400px;" id="content_image" alt="content_image"></div>
+                                            <div class="col-md-1"></div>
+                                          </div>
+                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10"><a id="download" href="{{ url_for('static', filename='img/photo.jpg') }}" download="logo.png"><img src="{{ url_for('static', filename='img/photo.jpg') }}" alt="..." class="img-thumbnail img-responsive center-block" style="height: 400px;"  id="transfer_image" alt="transfer_image"></a></div>
+                                            <div class="col-md-1"></div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+             </div>
+             <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                       <hr class="featurette-divider"   style="margin: 30px 0;">
+                 <!-- FOOTER -->
+                        <footer>
+                        <p class="pull-right"><a href="{{ url_for('index') }}">Back to index</a></p>
+                        <p style="color: aliceblue;">&copy; 2019 中国科学技术大学苏州研究院 超级计算中心 风格迁移小组</p>
+                       </footer>
+                   </div>
+                   <div class="col-md-2"></div>
+               </div>
+         </div>
+        
+</body>
+
+<script type="text/javascript">
+function down() { 
+        var test1=document.getElementById("transfer_image").src;
+}
+ $("#openfile").click(function () {
+            $("#inputfile").click();
+        });
+    
+    
+    var w=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    function get_weight(){
+        var change = function($input){}
+        for(var i=0;i<20;i++){
+            temp=document.getElementsByClassName("style-range")[i].value;
+            if(temp!=w[i]){
+                var j=i.toString();
+                var obj=$('#'+'range'+j)
+                obj.RangeSlider({ min: 0,   max: 100,  step: 1,  callback: change});
+                w[i]=temp;
+            }
+        }
+        console.log(w);
+        var data_id = {
+                    ids:JSON.stringify(w)
+                };
+        $.ajax({
+            url:"/up_w",
+            type:"POST",
+            async:false,
+            data:data_id,
+            success: function (data) {
+                console.log("nihao");
+            }
+        })
+        transfer1()
+    }
+
+    var file=$("#inputfile");
+    file.change(function () {
+        console.log(1111);
+        $("#content_image").attr("src",getObjectURL(file[0].files[0]));
+
+    });
+    function transfer1(){
+             var formFile = new FormData($('#uploadForm')[0])
+		     $.ajax({
+                url:"/m_up_file",
+                type:"POST",
+                data:formFile,
+                processData:false,
+                contentType:false,
+                success: function (data) {
+                    console.log("nihao");
+                    $("#transfer_image").attr("src",'data:image/png;base64,'+data);
+                }
+             })
+    }
+    function getObjectURL(file) {
+        var url = null;
+       /* window.URL = window.URL || window.webkitURL;*/
+
+        if (window.createObjcectURL != undefined) {
+            url = window.createOjcectURL(file);
+        } else if (window.URL != undefined) {
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
+</html>

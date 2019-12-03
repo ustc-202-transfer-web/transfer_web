@@ -11,9 +11,9 @@
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
-        <link rel="stylesheet"  href="{{ url_for('static', filename='css/image.css') }}">
+        <link rel="stylesheet"  href="{{ url_for('static', filename='css/video.css') }}">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>摄像头实时迁移</title>
+        <title>视频风格迁移</title>
     </head>
 <body>
     
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="title_row_1 name" style="height: 0px;">
-                    <h1>风格融合与快速迁移 <small>摄像头风格快速迁移</small></h1>
+                    <h1>风格融合与快速迁移 <small>视频风格迁移</small></h1>
                 </div>
             </div>
         </div>
@@ -55,23 +55,18 @@
                 <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3"></div>
-                            <form>
-                                    <div class="col-md-6">
-                                        <div class="button_row_2">
-                                            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                                <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-default btn-success" onclick="reflash()">点击以下风格图片切换风格</button>
-                                                </div>
-                                                <!-- <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-default btn-success">风格迁移</button>
-                                                </div> -->
-                                                <!-- <div class="btn-group" role="group">
-                                                    <button type="button" class="btn btn-default btn-success">截  图</button>
-                                                </div> -->
-                                            </div>
+                            <div class="col-md-6 button_div">
+                              
+                                <form class="form-inline"  id="uploadForm">
+                                    
+                                    <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 10%;">打开视频</button>
+    
+                                    <div class="form-group">
+                                            <input type="file" id="inputfile" name="inputfile" style="opacity: 0" hidden>
                                         </div>
-                                    </div>
-                            </form>
+                                </form>
+                          
+                        </div>
                             
                             <div class="col-md-3"></div> 
                         </div>
@@ -93,7 +88,9 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-10 video" >
                                         <canvas id="transfer_video" style="height: 400px;" class="img-thumbnail img-responsive">
-                                            <video id="content_video" style="height: 400px;" autoplay class="img-thumbnail img-responsive"></video>
+                                            <video id="content_video" style="height: 400px;" autoplay class="img-thumbnail img-responsive">
+                                                <source src="" type="video/mp4">
+                                            </video>
                                         </canvas>
                                     </div>
                                     <div class="col-md-1"></div>
@@ -126,18 +123,23 @@
       </div>
 </body>
 <script type="text/javascript">
-    window.onload=function(){
-        func1();
-    }
-    //读取摄像头
-    var constraints = { audio: false, video: true }; 
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then(function(mediaStream) {
-    var video = document.querySelector('video');
-    video.srcObject = mediaStream;
-    })
-    .catch(function(err) { console.log(err.name + ": " + err.message); }); // 总是在最后检查错误
+        var c = document.getElementById("transfer_video");
+		var canvas = c.getContext("2d");
+		var img = new Image();
+		img.src = "{{ url_for('static', filename='img/photo0.jpg') }}";
+		canvas.drawImage(img,0,0,300,150);
 
+    $("#openfile").click(function () {
+            $("#inputfile").click();
+        });
+
+    var file=$("#inputfile");
+    file.change(function () {
+        $("#content_video").attr("src",getObjectURL(file[0].files[0]));
+        func1();
+    });
+
+    
 
     function convertBase64UrlToBlob(urlData){
         var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
@@ -180,8 +182,8 @@
         if(interval!=null){//判断计时器是否为空
             clearInterval(interval);
             interval=null;
-            }
-        interval = setInterval(transfer,3000);//启动计时器，调用overs函数，
+        }
+        interval = setInterval(transfer,3000);//启动计时器，调用overs函数，       
     }
     
     //迁移参数交互
@@ -202,6 +204,19 @@
         })
     }
 
+    function getObjectURL(file) {
+        var url = null;
+       /* window.URL = window.URL || window.webkitURL;*/
+
+        if (window.createObjcectURL != undefined) {
+            url = window.createOjcectURL(file);
+        } else if (window.URL != undefined) {
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
 //     $(document).ready(function(){  
 //      fun(1);//执行函数
 // });     

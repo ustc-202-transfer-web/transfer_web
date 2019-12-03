@@ -26,7 +26,7 @@
 ================================================== -->
   <body>
 
-            <div class="container-fluid" style="height:10px;">
+    <div class="container-fluid" style="height:10px;">
             <div class="row">
                     <nav class="navbar navbar-inverse "  style="height: 100px;">
                   
@@ -34,8 +34,8 @@
                               <div class="row">
                                    
                                         <div  class="col-md-3" margin-top:10px;><img class="second-slide" style="height: 80px;width: 130%;" src="{{ url_for('static', filename='img/logo.svg') }}"><br></div>
-                                        <div class="col-md-5"></div>
-                                        <div  class="col-md-4"  style="margin-top:15px;">
+                                        <div class="col-md-2"></div>
+                                        <div  class="col-md-7"  style="margin-top:15px;">
                                         <div class="navbar-header">
                                           <a class="navbar-brand"  href="{{ url_for('index') }}" >主 页</a>
                                         </div>
@@ -43,6 +43,8 @@
                                           <ul class="nav navbar-nav">
                                             <li><a href="{{ url_for('real_time_transfer') }}">摄像头风格迁移</a></li>
                                             <li ><a href="{{ url_for('single_image_transfer') }}">单风格图像风格迁移</a></li>
+                                            <li ><a href="{{ url_for('muilt_image_transfer') }}">多风格融合快速迁移</a></li>
+                                            <li ><a href="{{ url_for('video_transfer') }}">视频风格迁移</a></li>
                                             <!-- <li><a href="train.html">视频风格训练</a></li> -->
                                           </ul>
                                         </div><!--/.nav-collapse -->
@@ -91,7 +93,7 @@
             <div class="carousel-caption" style="margin-bottom: 3%;">
               <h1>多风格图像风格迁移</h1>
               <p>通过单风格模型的改进，将多个风格图片共同训练并得出对应的参数向量，在多风格融合中，可以选择不多于4种风格图片，各个风格等比例迁移。</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">尝试一下</a></p>
+              <p><a class="btn btn-lg btn-primary" href="{{ url_for('muilt_image_transfer') }}" role="button">尝试一下</a></p>
             </div>
           </div>
         </div>

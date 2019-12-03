@@ -49,6 +49,8 @@ body{
 .btn-success{
     text-align: center;
     position: relative;
+    margin: auto auto;
+    padding: 6px 10%;
 	border-radius: 10px;
 	border: none;
 	color: #FFFFFF;

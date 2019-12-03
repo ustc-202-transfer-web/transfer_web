@@ -25,8 +25,8 @@
                               <div class="row">
                                    
                                         <div  class="col-md-3" margin-top:10px;><img class="second-slide" style="height: 80px;width: 130%;" src="{{ url_for('static', filename='img/logo.svg') }}"><br></div>
-                                        <div class="col-md-5"></div>
-                                        <div  class="col-md-4"  style="margin-top:15px;">
+                                        <div class="col-md-2"></div>
+                                        <div  class="col-md-7"  style="margin-top:15px;">
                                         <div class="navbar-header">
                                           <a class="navbar-brand"  href="{{ url_for('index') }}">主 页</a>
                                         </div>
@@ -34,6 +34,8 @@
                                           <ul class="nav navbar-nav">
                                             <li><a href="{{ url_for('real_time_transfer') }}">摄像头风格迁移</a></li>
                                             <li ><a href="{{ url_for('single_image_transfer') }}">单风格图像风格迁移</a></li>
+                                            <li ><a href="{{ url_for('muilt_image_transfer') }}">多风格融合快速迁移</a></li>
+                                            <li ><a href="{{ url_for('video_transfer') }}">视频风格迁移</a></li>
                                             <!-- <li><a href="train.html">视频风格训练</a></li> -->
                                           </ul>
                                         </div><!--/.nav-collapse -->

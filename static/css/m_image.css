@@ -12,7 +12,7 @@ body{
 .image_row_3{
     position: relative;
     width: 100%;
-	height: 260px;
+	height: 270px;
 	border-radius: 10px;
 	background: #FFFFFF;
     margin: 1% auto;
@@ -32,9 +32,11 @@ body{
     margin-bottom: 50px;
 }
 .img_div{
-    width: 14%;
-    margin-top: 1%;
-	height: 180px;
+    width: 5%;
+    margin-top: 0.5%;
+    padding-right: 10px;
+    padding-left: 10px;
+	height: 170px;
 	overflow:hidden;
 	border-radius: 20px;
 	float: left;
@@ -42,13 +44,14 @@ body{
 }
 .button_div{
     position: relative;
-    left: 10%;
-    margin-top: 0.5%;
-    width: 60%;
+    margin-top: 1%;
+    width: 100%;
 }
 .btn-success{
     text-align: center;
     position: relative;
+    margin: auto auto;
+    padding: 6px 10%;
 	border-radius: 10px;
 	border: none;
 	color: #FFFFFF;
@@ -59,4 +62,15 @@ body{
     margin-left: 1%;
     width:100%;
     height:400px;
+}
+
+.scroll{
+    width: 100%;
+    height: 210px;
+    overflow-x:scroll;
+}
+
+.img_style{
+    height: 80%;
+    width: 80%;
 }

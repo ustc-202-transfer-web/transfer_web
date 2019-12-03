@@ -1,25 +1,35 @@
 #-*-coding:utf-8-*-
 from flask import Flask,render_template,request,Response
-# from flask_uploads import configure_uploads,UploadSet
 import os,base64
 from io import BytesIO
-#from m_style_model.s_style import stylize, loading_model
 from forward import forward  # 导入前向网络模块
 import tensorflow as tf  # 导入tensorflow模块
 import numpy as np  # 导入numpy模块
 from PIL import Image  # 导入PIL模块
 import random
+import json
 
 app = Flask(__name__)
 
-def stylize(img,label_list,sess,target,content,weight):
-    #默认第一张权重为1，即100%
-    alpha_list=1
-    # 将风格列表及对应的权重放入字典中
-    input_weight = np.zeros([1, 20])
-    weight_dict = dict([(label_list,alpha_list)])
-    for k, v in weight_dict.items():
-        input_weight[0, k] = v
+def sm_stylize(img,label_list,sess,target,content,weight,alpha_list=(1,1,1,1)):
+    if isinstance(label_list,int):
+        style_num=1
+    else:
+        style_num=len(label_list)
+    alpha_list=alpha_list[0:style_num]
+    if style_num==1:
+        alpha_list=(1)
+    else:
+        print(alpha_list)
+        alpha_list=alpha_list/np.sum(alpha_list)
+        alpha_list=tuple(alpha_list)
+    input_weight=np.zeros([1,20])
+    if style_num==1:
+        weight_dict = dict([(label_list,alpha_list)])
+    else:
+        weight_dict = dict(zip(label_list, alpha_list))
+    for k,v in weight_dict.items():
+        input_weight[0,k]=v
     # 进行风格融合与迁移
     img = sess.run(target,
                         feed_dict={content: img[np.newaxis, :, :, :], weight: input_weight})
@@ -46,6 +56,9 @@ def loading_model():
         saver.restore(sess, ckpt.model_checkpoint_path)
     return sess,target,content,weight
 
+a=0
+sess,target,content,weight=loading_model()
+
 def image_to_base64(image):    
     img_buffer = BytesIO()    
     image.save(img_buffer, format='JPEG')    
@@ -53,14 +66,23 @@ def image_to_base64(image):
     base64_str = base64.b64encode(byte_data)    
     return base64_str  
 
-
-
 @app.route('/up_a', methods=['GET', 'POST'])
 def up_a():
         global a
         b=request.values.get('a1')
         a=int(b)-1
         print(b)
+        return ""
+
+@app.route('/up_w', methods=['GET', 'POST'])
+def up_w():
+        global w
+        w=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ids=request.form.get('ids')
+        w_data = json.loads(ids)
+        for i in range(20):
+            w[i]=int(w_data[i])
+        print(w)
         return ""
 
 @app.route('/up_file', methods=['GET', 'POST'])#接受并存储文件
@@ -75,7 +97,28 @@ def up_file():
         img = Image.open("static/files/img1/pic.png")
         img=np.array(img)
         img = img[:,:,:3]
-        img=stylize(img,a,sess,target,content,weight)
+        img=sm_stylize(img,a,sess,target,content,weight)
+        img=Image.fromarray(img)
+        data=image_to_base64(img)
+        #data = base64.b64encode(img.read()).decode()#进行base64编码
+        # html = '''<img src="data:image/png;base64,{}" style="width:100%;height:100%;"/>'''#html代码
+        # htmlstr = html.format(data)#添加数据
+        return data
+
+@app.route('/m_up_file', methods=['GET', 'POST'])#接受并存储文件
+def m_up_file():
+    global w,sess,target,content,weight
+    if request.method == "POST":
+    	#接收图片
+        img=request.files['inputfile']
+        img.save('static/files/img1/pic.png')
+        #photo.save(request.files['inputfile'], 'img1', 'pic.png')#保存图片
+		#发送图片
+        img = Image.open("static/files/img1/pic.png")
+        img=np.array(img)
+        img = img[:,:,:3]
+        label_list=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+        img=sm_stylize(img,label_list,sess,target,content,weight,tuple(w))
         img=Image.fromarray(img)
         data=image_to_base64(img)
         #data = base64.b64encode(img.read()).decode()#进行base64编码
@@ -91,11 +134,17 @@ def single_image_transfer():
 def real_time_transfer():
     return  render_template('cap.html')
 
+@app.route('/muilt_image_transfer', methods=['GET', 'POST'])
+def muilt_image_transfer():
+    return render_template('m_image.html')
+
+@app.route('/video_transfer', methods=['GET', 'POST'])#接受并存储文件
+def video_transfer():
+    return  render_template('video.html')
+
 @app.route("/",methods = ["GET","POST"])
 def index():
     global sess,target,content,weight,a
-    a=0
-    sess,target,content,weight=loading_model()
     return  render_template('index.html')
 
 if __name__ == "__main__":

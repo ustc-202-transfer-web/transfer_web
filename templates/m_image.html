@@ -63,7 +63,8 @@
                               
                                                     <form class="form-inline"  id="uploadForm">
                                                         
-                                                        <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 38%;">打开图片</button>
+                                                        <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 34%;">打开图片</button>
+                                                        <button class="btn btn-default btn-success" type="button" onclick="downloadImg()" style="margin-left: 5%;">下载图片</button>
                         
                                                         <div class="form-group">
                                                                 <input type="file" id="inputfile" name="inputfile" style="opacity: 0" hidden>
@@ -71,7 +72,7 @@
                                                     </form>
                                               
                                             </div>
-                                            
+                                          
                                     <div class="scroll">
                                     <div class="row" style="position:relative;width: 290%;">
                                             <div class="col-md-1 img_div">
@@ -198,9 +199,17 @@
 </body>
 
 <script type="text/javascript">
-function down() { 
-        var test1=document.getElementById("transfer_image").src;
-}
+    function downloadImg(){
+            var img = document.getElementById('transfer_image'); // 获取要下载的图片
+            console.log("11111111111111");
+            var url = img.src;                            // 获取图片地址
+            var a = document.createElement('a');          // 创建一个a节点插入的document
+            var event = new MouseEvent('click')           // 模拟鼠标click点击事件
+            a.download = 'transfer_image'                  // 设置a节点的download属性值
+            a.href = url;                                 // 将图片的src赋值给a节点的href
+            a.dispatchEvent(event);                       // 触发鼠标点击事件
+    }
+
  $("#openfile").click(function () {
             $("#inputfile").click();
         });
@@ -236,7 +245,6 @@ function down() {
 
     var file=$("#inputfile");
     file.change(function () {
-        console.log(1111);
         $("#content_image").attr("src",getObjectURL(file[0].files[0]));
 
     });

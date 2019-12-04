@@ -54,13 +54,13 @@
             <div class="row">
                 <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6 button_div">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 button_div">
                               
                                 <form class="form-inline"  id="uploadForm">
                                     
-                                    <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 10%;">打开视频</button>
-    
+                                    <button type="button" class="btn btn-default btn-success" id="openfile" style="margin-left: 11%;">打开视频</button>
+                                    <button class="btn btn-default btn-success" type="button" onclick="downloadImg()" style="margin-left: 6%;">截图保存</button>
                                     <div class="form-group">
                                             <input type="file" id="inputfile" name="inputfile" style="opacity: 0" hidden>
                                         </div>
@@ -68,7 +68,7 @@
                           
                         </div>
                             
-                            <div class="col-md-3"></div> 
+                            <div class="col-md-2"></div> 
                         </div>
                         <div class="row image_row_3" style="height: 220px;">
                             <div class="col-md-1"></div>
@@ -123,6 +123,18 @@
       </div>
 </body>
 <script type="text/javascript">
+function downloadImg(){
+            var img = document.getElementById('transfer_video1'); // 获取要下载的图片
+            console.log("11111111111111");
+            var url = img.src;                            // 获取图片地址
+            var a = document.createElement('a');          // 创建一个a节点插入的document
+            var event = new MouseEvent('click')           // 模拟鼠标click点击事件
+            a.download = 'transfer_image'                  // 设置a节点的download属性值
+            a.href = url;                                 // 将图片的src赋值给a节点的href
+            a.dispatchEvent(event);                       // 触发鼠标点击事件
+    }
+
+
         var c = document.getElementById("transfer_video");
 		var canvas = c.getContext("2d");
 		var img = new Image();

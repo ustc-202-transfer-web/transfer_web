@@ -3,16 +3,16 @@ input[type=range] {
     position: relative;
     margin: auto;
     margin-top: 4%;
-    height: 15px;
+    height: 13px;
     width: 80%;
     border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
-    background: #9e9595; 
+    background: #ffffff; 
 }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 20px;
+    height: 17px;
     width: 15px;
-    margin-top: -3px; /*使滑块超出轨道部分的偏移量相等*/
+    margin-top: -2px; /*使滑块超出轨道部分的偏移量相等*/
     background: #ffffff; 
     border-radius: 50%; /*外观设置为圆形*/
     border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
@@ -20,7 +20,7 @@ input[type=range]::-webkit-slider-thumb {
 }  
 
 input[type=range]::-webkit-slider-runnable-track {
-    height: 15px;
+    height: 13px;
     border-radius: 10px; /*将轨道设为圆角的*/
     box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
 }
@@ -30,7 +30,7 @@ input[type=range]:focus {
 }
 
 input[type=range]::-moz-range-progress {
-    background: linear-gradient(to right, #059CFA, white 100%, #9e9595);
+    background: linear-gradient(to right, #059CFA, white 100%, #ffffff);
     height: 13px;    
     border-radius: 10px;
 }

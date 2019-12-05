@@ -57,7 +57,6 @@ def loading_model():
     return sess,target,content,weight
 
 a=0
-sess,target,content,weight=loading_model()
 
 def image_to_base64(image):    
     img_buffer = BytesIO()    
@@ -145,6 +144,7 @@ def video_transfer():
 @app.route("/",methods = ["GET","POST"])
 def index():
     global sess,target,content,weight,a
+    sess,target,content,weight=loading_model()
     return  render_template('index.html')
 
 if __name__ == "__main__":

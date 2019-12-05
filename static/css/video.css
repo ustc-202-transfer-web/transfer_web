@@ -32,9 +32,11 @@ body{
     margin-bottom: 50px;
 }
 .img_div{
-    width: 14%;
-    margin-top: 1%;
-	height: 180px;
+    width: 5%;
+    margin-top: 0.5%;
+    padding-right: 10px;
+    padding-left: 10px;
+	height: 150px;
 	overflow:hidden;
 	border-radius: 20px;
 	float: left;
@@ -43,7 +45,7 @@ body{
 .button_div{
     position: relative;
     left: 10%;
-    margin-top: 0.5%;
+    margin-top: 1%;
     width: 60%;
 }
 .btn-success{
@@ -61,4 +63,14 @@ body{
     margin-left: 1%;
     width:100%;
     height:400px;
+}
+.scroll{
+    width: 100%;
+    height: 190px;
+    overflow-x:scroll;
+}
+
+.img_style{
+    height: 95%;
+    width: 95%;
 }

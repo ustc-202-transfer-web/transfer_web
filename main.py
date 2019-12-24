@@ -99,9 +99,6 @@ def up_file():
         img=sm_stylize(img,a,sess,target,content,weight)
         img=Image.fromarray(img)
         data=image_to_base64(img)
-        #data = base64.b64encode(img.read()).decode()#进行base64编码
-        # html = '''<img src="data:image/png;base64,{}" style="width:100%;height:100%;"/>'''#html代码
-        # htmlstr = html.format(data)#添加数据
         return data
 
 @app.route('/m_up_file', methods=['GET', 'POST'])#接受并存储文件
@@ -129,17 +126,9 @@ def m_up_file():
 def single_image_transfer():
     return render_template('image.html')
     
-@app.route('/real_time_transfer', methods=['GET', 'POST'])#接受并存储文件
-def real_time_transfer():
-    return  render_template('cap.html')
-
 @app.route('/muilt_image_transfer', methods=['GET', 'POST'])
 def muilt_image_transfer():
     return render_template('m_image.html')
-
-@app.route('/video_transfer', methods=['GET', 'POST'])#接受并存储文件
-def video_transfer():
-    return  render_template('video.html')
 
 @app.route("/",methods = ["GET","POST"])
 def index():

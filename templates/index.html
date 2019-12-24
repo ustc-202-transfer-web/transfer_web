@@ -41,13 +41,10 @@
                                         </div>
                                         <div id="navbar" class="collapse navbar-collapse">
                                           <ul class="nav navbar-nav">
-                                            <li><a href="{{ url_for('real_time_transfer') }}">摄像头风格迁移</a></li>
                                             <li ><a href="{{ url_for('single_image_transfer') }}">单风格图像风格迁移</a></li>
                                             <li ><a href="{{ url_for('muilt_image_transfer') }}">多风格融合快速迁移</a></li>
-                                            <li ><a href="{{ url_for('video_transfer') }}">视频风格迁移</a></li>
-                                            <!-- <li><a href="train.html">视频风格训练</a></li> -->
                                           </ul>
-                                        </div><!--/.nav-collapse -->
+                                        </div>
                                         </div>
                             </div>
                           </div>
@@ -74,16 +71,6 @@
               <h1>单风格快速迁移</h1>
               <p>所谓图像风格迁移，是指将一幅内容图A的内容，和一幅风格图B的风格融合在一起，从而生成一张具有A图风格和B图内容的图片C的技术。目前这个技术已经得到了比较广泛的应用，这个网站可以将用户的照片自动变换为具有艺术家的风格的图片。</p>
               <p><a class="btn btn-lg btn-primary" href="{{ url_for('single_image_transfer') }}" role="button">尝试一下</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img class="second-slide" src="{{ url_for('static', filename='img/200.png') }}" alt="Second slide">
-          <div class="container">
-            <div class="carousel-caption" style="margin-bottom: 3%;">
-              <h1>摄像头实时风格迁移</h1>
-              <p>打开摄像头或者上传一个视频至我们的网站，即可实时播放具有艺术风格的视频。也可将艺术风格化后的视频下载至本地。对摄像头视频帧获取并对其进行风格迁移处理，使用流   视频播放方式实现实时艺术风格迁移。</p>
-              <p><a class="btn btn-lg btn-primary" href="{{ url_for('real_time_transfer') }}" role="button">尝试一下</a></p>
             </div>
           </div>
         </div>
@@ -195,16 +182,5 @@
 
     </div><!-- /.container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script> -->
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <!-- <script src="../../assets/js/vendor/holder.min.js"></script> -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
 </html>

@@ -34,10 +34,8 @@
                                         </div>
                                         <div id="navbar" class="collapse navbar-collapse">
                                           <ul class="nav navbar-nav">
-                                            <li><a href="{{ url_for('real_time_transfer') }}">摄像头风格迁移</a></li>
                                             <li ><a href="{{ url_for('single_image_transfer') }}">单风格图像风格迁移</a></li>
                                             <li ><a href="{{ url_for('muilt_image_transfer') }}">多风格融合快速迁移</a></li>
-                                            <li ><a href="{{ url_for('video_transfer') }}">视频风格迁移</a></li>
                                             <!-- <li><a href="train.html">视频风格训练</a></li> -->
                                           </ul>
                                         </div><!--/.nav-collapse -->
@@ -77,83 +75,83 @@
                                     <div class="row" style="position:relative;width: 290%;">
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/1.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range0" type="range" value="0" oninput="get_weight()">
+                                                <input class="img-responsive style-range" id="range0" type="range" value="0">
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/2.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range1" type="range" value="0" oninput="get_weight()">
+                                                <input class="img-responsive style-range" id="range1" type="range" value="0">
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/3.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range2" type="range" value="0" oninput="get_weight()">
+                                                <input class="img-responsive style-range" id="range2" type="range" value="0">
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/4.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range3" type="range" value="0" oninput="get_weight()">
+                                                <input class="img-responsive style-range" id="range3" type="range" value="0">
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/5.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range4" type="range" value="0" oninput="get_weight()">
+                                                <input class="img-responsive style-range" id="range4" type="range" value="0">
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/6.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range5" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range5" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/7.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range6" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range6" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/8.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range7" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range7" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/9.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range8" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range8" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/10.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range9" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range9" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/11.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range10" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range10" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/12.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range11" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range11" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/13.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range12" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range12" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/14.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range13" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range13" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/15.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range14" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range14" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/16.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range15" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range15" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/17.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range16" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range16" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/18.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range17" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range17" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/19.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range18" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range18" type="range" value="0"> 
                                             </div>
                                             <div class="col-md-1 img_div">
                                                 <img src="{{ url_for('static', filename='img/20.png') }}" alt="..." class="img-thumbnail img-responsive center-block img_ho img_style">
-                                                <input class="img-responsive style-range" id="range19" type="range" value="0" oninput="get_weight()"> 
+                                                <input class="img-responsive style-range" id="range19" type="range" value="0"> 
                                             </div>
                                     </div>
                                 </div>
@@ -213,6 +211,12 @@
  $("#openfile").click(function () {
             $("#inputfile").click();
         });
+
+$('.style-range').on('mouseup',function(){ //鼠标抬起事件(获取最后一个值)
+    get_weight()
+    transfer()
+});
+
     
     
     var w=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -240,7 +244,6 @@
                 console.log("nihao");
             }
         })
-        transfer1()
     }
 
     var file=$("#inputfile");
@@ -248,7 +251,7 @@
         $("#content_image").attr("src",getObjectURL(file[0].files[0]));
 
     });
-    function transfer1(){
+    function transfer(){
              var formFile = new FormData($('#uploadForm')[0])
 		     $.ajax({
                 url:"/m_up_file",
